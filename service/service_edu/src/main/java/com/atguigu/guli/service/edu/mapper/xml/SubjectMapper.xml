@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.guli.service.edu.mapper.SubjectMapper">
+
+    <resultMap id="nestedSubject" type="com.atguigu.guli.service.edu.entity.vo.SubjectVo">
+        <id property="id" column="id"></id>
+        <result property="title" column="title"/>
+        <result property="sort" column="sort"/>
+        <collection property="children"
+                    column="id"
+                    select="selectNestedListByParentId"
+                    ofType="com.atguigu.guli.service.edu.entity.vo.SubjectVo"/>
+    </resultMap>
+    <select id="selectNestedListByParentId"
+            resultMap="nestedSubject">
+        select id,title,sort from edu_subject where parent_id = #{parentId}
+    </select>
+
+    <insert id="saveBatchData">
+        INSERT INTO edu_subject(id,title,paremt,gmt_create,gmt_modified) VALUES
+        <foreach collection="list" separator="," item="item">
+            (#{item.id},#{item.title},#{item.parent_id},#{item.gmt_create},#{item.gmt_modified})
+        </foreach>
+    </insert>
+
+</mapper>

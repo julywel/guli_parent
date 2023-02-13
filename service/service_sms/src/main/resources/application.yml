@@ -1,0 +1,38 @@
+#server:
+#  port: 8150 # 服务端口
+#
+#spring:
+#  profiles:
+#    active: dev # 环境设置
+#  application:
+#    name: service-sms # 服务名
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848 # nacos服务地址
+#  #spring:
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.199.143:7000
+#        - 192.168.199.143:7001
+#        - 192.168.199.143:7002
+#        - 192.168.199.143:7003
+#        - 192.168.199.143:7004
+#        - 192.168.199.143:7005
+#    lettuce:
+#      pool:
+#        max-active: 20  #最大连接数，负值表示没有限制，默认8
+#        max-wait: -1    #最大阻塞等待时间，负值表示没限制，默认-1
+#        max-idle: 8     #最大空闲连接，默认8
+#        min-idle: 0     #最小空闲连接，默认0
+#
+#
+##阿里云短信
+#aliyun:
+#  sms:
+#    regionId: cn-hangzhou
+#    keyid: LTAI5tAxq7VWc3LGvPLo3PTs
+#    keysecret: xuDPe2CSgTorVmLdavGaxWpK3JH6VR
+#    templateCode: SMS_154950909
+#    signName: 阿里云短信测试
